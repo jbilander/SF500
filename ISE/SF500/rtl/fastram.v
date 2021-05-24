@@ -20,13 +20,13 @@ module fastram(
 
 
 /*
-Amiga memory map Z2-space
+Amiga memory map Z2-space:
 
-		 A	23	22	21
-20000		 0	 0	 1		// 2MB
-40000		 0	 1	 0		// 2MB
-60000		 0	 1	 1		// 2MB
-80000		 1	 0	 0		// 2MB
+	A	23	22	21
+20000		 0	 0	 1	// 2MB
+40000		 0	 1	 0	// 2MB
+60000		 0	 1	 1	// 2MB
+80000		 1	 0	 0	// 2MB
 */
 
 wire first_4MB_access  = !RAM_CONFIGURED_n && ( (A[23:21] == BASE_RAM[7:5]) || (A[23:21] == (BASE_RAM[7:5] + 3'b001)) );
