@@ -37,12 +37,12 @@ reg [1:0] config_out_n = 2'b11;
 reg [1:0] configured_n = 2'b11;
 reg [1:0] shutup_n = 2'b11;
 
-wire autoconfig_access = A[23:16] == 8'hE8;
+wire autoconfig_access = !CFGIN_n && CFGOUT_n && (A[23:16] == 8'hE8);
 
 assign RAM_CONFIGURED_n = configured_n[RAM_CARD];
 assign IDE_CONFIGURED_n = configured_n[IDE_CARD];
 assign CFGOUT_n = |config_out_n;
-assign D[15:0] = (!CFGIN_n && CFGOUT_n && RESET_n && autoconfig_access && RW_n && !DS_n) ? {data_out, 12'bZ} : 16'bZ;
+assign D[15:12] = autoconfig_access && RW_n && !DS_n ? data_out : 4'bZ;
 
 always @(negedge RESET_n or posedge AS_CPU_n) begin
 
@@ -63,11 +63,11 @@ always @(negedge RESET_n or negedge DS_n) begin
 
 		configured_n <= 2'b11;
 		shutup_n <= 2'b11;
-		data_out <= 4'hF;
+		data_out <= 4'bZ;
 
 	end else begin
 	
-		if(!CFGIN_n && CFGOUT_n && autoconfig_access) begin
+		if(autoconfig_access) begin
 		
 			if (RW_n) begin
 				
