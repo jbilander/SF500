@@ -15,6 +15,9 @@ module main_top(
 	input [2:0] FC,
 	input AS_CPU_n,
 	input DTACK_MB_n,
+	input BGACK_n,
+	input BG_n,
+	input HALT_n,
 	output CFGOUT_n,
 	output CLKCPU,
 	output E,
@@ -32,12 +35,11 @@ module main_top(
 );
 
 
-wire [7:5] base_ram; 	// base address for the RAM_CARD in Z2-space. (A23-A21)
-wire [7:0] base_ide; 	// base address for the IDE_CARD in Z2-space. (A23-A16)
+wire [7:5] base_ram;	// base address for the RAM_CARD in Z2-space. (A23-A21)
+wire [7:0] base_ide;	// base address for the IDE_CARD in Z2-space. (A23-A16)
 
 wire ram_configured_n;	// keeps track if RAM_CARD is autoconfigured ok.
-wire ram_access;			// keeps track if local SRAM is being accessed.
-
+wire ram_access;	// keeps track if local SRAM is being accessed.
 wire ide_configured_n;	// keeps track if IDE_CARD is autoconfigured ok.
 
 wire ds_n = LDS_n & UDS_n;
@@ -45,16 +47,34 @@ wire fast_dtack_n;
 wire m6800_dtack_n;
 wire dtack_n = DTACK_MB_n & m6800_dtack_n & fast_dtack_n;
 
+reg dmareq_n = 1'b1;
 reg cpu_speed_switch = 1'b1;
 
 //Fast Rise Time Method of Driving 5V, drive to 3V3 then High-Z and let 1k pull-up do the rest
 assign DTACK_CPU_n = ((dtack_n & DTACK_CPU_n) == 1'b0) ? dtack_n : 1'bZ; 
 assign CLKCPU = cpu_speed_switch ? C7M : C14M;
-assign AS_MB_n = AS_CPU_n;
+
+//Bus arbitration: BG_n = 0 and wait for current cycle to complete, AS_n = 1, DTACK_n = 1, (BGACK_n = 1).
+//2-Wire Bus Arbitration: External device takes control on BG_n = 0 and relinquish bus by negating BR_n, CPU then negates BG_n.
+//3-Wire Bus Arbitration: External device will set BGACK_n = 0 to take control of bus and relinquish bus by negating BGACK_n
+assign AS_MB_n = dmareq_n && BGACK_n && HALT_n ? AS_CPU_n : 1'bZ;
 
 //Wait until bus-cycle has reached (S7) before hot-switching to new cpu speed
 always @(posedge dtack_n) begin
 	cpu_speed_switch <= SW1;
+end
+
+
+always @(posedge C7M) begin
+	
+	if (!BG_n) begin
+		if (AS_CPU_n && dtack_n) begin
+			dmareq_n <= 1'b0; 
+		end 
+	end else begin
+		dmareq_n <= 1'b1; 
+	end
+
 end
 
 
@@ -72,7 +92,7 @@ m6800 m6800_bus(
 accel accelerator(
 	.CPU_SPEED_SWITCH(cpu_speed_switch),
 	.C14M(C14M),
-	.AS_CPU_n(AS_CPU_n),
+	.DS_n(ds_n),
 	.RAM_ACCESS(ram_access),
 	.FAST_DTACK_n(fast_dtack_n)
 );
