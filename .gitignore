@@ -113,6 +113,9 @@ fuseRelaunch.cmd
 *.tim
 *.tspec
 *.vm6
+*.mod
+*.lfp
+*.data
 
 
 # generated folders
