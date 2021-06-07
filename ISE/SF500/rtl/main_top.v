@@ -30,6 +30,9 @@ module main_top(
 	output WE_BANK0_EVEN_n,
 	output WE_BANK1_EVEN_n,
 	output ROM_OE_n,
+	output IDE_IOR_n,
+	output IDE_IOW_n,
+	output [1:0] IDE_CS_n,
 	inout [15:0] D,
 	inout DTACK_CPU_n
 );
@@ -41,6 +44,7 @@ wire [7:0] base_ide;	// base address for the IDE_CARD in Z2-space. (A23-A16)
 wire ram_configured_n;	// keeps track if RAM_CARD is autoconfigured ok.
 wire ram_access;	// keeps track if local SRAM is being accessed.
 wire ide_configured_n;	// keeps track if IDE_CARD is autoconfigured ok.
+wire ide_access;	// keeps track if the IDE is being accessed.
 
 wire ds_n = LDS_n & UDS_n;
 wire fast_dtack_n;
@@ -94,6 +98,7 @@ accel accelerator(
 	.C14M(C14M),
 	.DS_n(ds_n),
 	.RAM_ACCESS(ram_access),
+	.IDE_ACCESS(ide_access),
 	.FAST_DTACK_n(fast_dtack_n)
 );
 
@@ -132,12 +137,18 @@ fastram ramcontrol(
 );
 
 ata idecontrol(
-	.A(A[23:16]),
+	.C14M(C14M),
+	.RESET_n(RESET_n),
+	.A(A[23:12]),
 	.RW_n(RW_n),
 	.AS_CPU_n(AS_CPU_n),
 	.BASE_IDE(base_ide[7:0]),
 	.IDE_CONFIGURED_n(ide_configured_n),
-	.ROM_OE_n(ROM_OE_n)
+	.ROM_OE_n(ROM_OE_n),
+	.IDE_IOR_n(IDE_IOR_n),
+	.IDE_IOW_n(IDE_IOW_n),
+	.IDE_CS_n(IDE_CS_n[1:0]),
+	.IDE_ACCESS(ide_access)
 );
 
 endmodule

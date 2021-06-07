@@ -5,6 +5,7 @@ module accel(
 	input C14M,
 	input DS_n,
 	input RAM_ACCESS,
+	input IDE_ACCESS,
 	output reg FAST_DTACK_n = 1'b1
 );
 
