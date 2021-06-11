@@ -3,7 +3,9 @@
 module ata(
 	input C14M,
 	input RESET_n,
-	input [23:12] A,
+	input [23:16] A_HIGH,
+	input A12,
+	input A13,
 	input RW_n,
 	input AS_CPU_n,
 	input [7:0] BASE_IDE,
@@ -15,12 +17,21 @@ module ata(
 	output IDE_ACCESS
 );
 
-reg ide_enable_n = 1'b1; //Keeps track read from ROM or IDE.
+/*
+scsi.device v109.3 or oktagon.device v6.10, selectable via jumper (ROM A15-line).
 
-wire ide_or_rom_access = !IDE_CONFIGURED_n && (A[23:16] == BASE_IDE[7:0]) && !AS_CPU_n;
+scsi.device v109.3 (jumper open) is for Kickstart 2.04 and above, 
+oktagon.device v6.10 (jumper closed) is for Kickstart 1.3
+Keep in mind Kickstart 1.3 can not operate Fast File System, 
+so OFS (Old File System) should be used instead.
+*/
+
+reg ide_enable_n = 1'b1; //Keeps track of read from ROM or IDE.
+
+wire ide_or_rom_access = !IDE_CONFIGURED_n && (A_HIGH == BASE_IDE) && !AS_CPU_n;
 assign IDE_ACCESS = !ide_enable_n && ide_or_rom_access;
-assign IDE_CS_n[0] = ~A[12];
-assign IDE_CS_n[1] = ~A[13];
+assign IDE_CS_n[0] = ~A12;
+assign IDE_CS_n[1] = ~A13;
 
 /*
 IDE A0-A2 are mapped on PCB like below, hence no mapping done via CPLD.

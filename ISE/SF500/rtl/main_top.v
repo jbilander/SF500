@@ -7,7 +7,10 @@ module main_top(
 	input C14M,
 	input RESET_n,
 	input CFGIN_n,
-	input [23:1] A,
+	input [23:16] A_HIGH,
+	input A12,
+	input A13,
+	input [6:1] A_LOW,
 	input RW_n,
 	input UDS_n,
 	input LDS_n,
@@ -33,7 +36,7 @@ module main_top(
 	output IDE_IOR_n,
 	output IDE_IOW_n,
 	output [1:0] IDE_CS_n,
-	inout [15:0] D,
+	inout [15:12] D,
 	inout DTACK_CPU_n
 );
 
@@ -46,39 +49,28 @@ wire ram_access;	// keeps track if local SRAM is being accessed.
 wire ide_configured_n;	// keeps track if IDE_CARD is autoconfigured ok.
 wire ide_access;	// keeps track if the IDE is being accessed.
 
-wire ds_n = LDS_n & UDS_n;
-wire fast_dtack_n;
+wire ds_n = LDS_n & UDS_n;	//Data Strobe
+wire fast_dtack_n = !AS_CPU_n && (ram_access || ide_access) ? 1'b0 : 1'b1;
 wire m6800_dtack_n;
 wire dtack_n = DTACK_MB_n & m6800_dtack_n & fast_dtack_n;
 
-reg dmareq_n = 1'b1;
 reg cpu_speed_switch = 1'b1;
 
 //Fast Rise Time Method of Driving 5V, drive to 3V3 then High-Z and let 1k pull-up do the rest
 assign DTACK_CPU_n = ((dtack_n & DTACK_CPU_n) == 1'b0) ? dtack_n : 1'bZ; 
 assign CLKCPU = cpu_speed_switch ? C7M : C14M;
 
-//Bus arbitration: BG_n = 0 and wait for current cycle to complete, AS_n = 1, DTACK_n = 1, (BGACK_n = 1).
-//2-Wire Bus Arbitration: External device takes control on BG_n = 0 and relinquish bus by negating BR_n, CPU then negates BG_n.
-//3-Wire Bus Arbitration: External device will set BGACK_n = 0 to take control of bus and relinquish bus by negating BGACK_n
-assign AS_MB_n = dmareq_n && BGACK_n && HALT_n ? AS_CPU_n : 1'bZ;
+//TODO: Allow for bus arbitration, DMA from A590, GVP or similar.
+assign AS_MB_n = AS_CPU_n;
+
 
 //Wait until bus-cycle has reached (S7) before hot-switching to new cpu speed
-always @(posedge dtack_n) begin
-	cpu_speed_switch <= SW1;
-end
+always @(posedge C14M) begin
 
-
-always @(posedge C7M) begin
-	
-	if (!BG_n) begin
-		if (AS_CPU_n && dtack_n) begin
-			dmareq_n <= 1'b0; 
-		end 
-	end else begin
-		dmareq_n <= 1'b1; 
+	if (AS_CPU_n && dtack_n) begin
+		cpu_speed_switch <= SW1;
 	end
-
+	
 end
 
 
@@ -93,24 +85,17 @@ m6800 m6800_bus(
 	.M6800_DTACK_n(m6800_dtack_n)
 );
 
-accel accelerator(
-	.CPU_SPEED_SWITCH(cpu_speed_switch),
-	.C14M(C14M),
-	.DS_n(ds_n),
-	.RAM_ACCESS(ram_access),
-	.IDE_ACCESS(ide_access),
-	.FAST_DTACK_n(fast_dtack_n)
-);
-
 autoconfig_zii autoconfig(
+	.C7M(C7M),
 	.CFGIN_n(CFGIN_n),
 	.JP2(JP2),
 	.AS_CPU_n(AS_CPU_n),
 	.RESET_n(RESET_n),
 	.DS_n(ds_n),
 	.RW_n(RW_n),
-	.A(A[23:1]),
-	.D(D[15:0]),
+	.A_HIGH(A_HIGH[23:16]),
+	.A_LOW(A_LOW[6:1]),
+	.D(D[15:12]),
 	.BASE_RAM(base_ram[7:5]),
 	.BASE_IDE(base_ide[7:0]),
 	.RAM_CONFIGURED_n(ram_configured_n),
@@ -119,11 +104,12 @@ autoconfig_zii autoconfig(
 );
 
 fastram ramcontrol(
-	.A(A[23:21]),
+	.A(A_HIGH[23:21]),
 	.JP2(JP2),
 	.RW_n(RW_n),
 	.UDS_n(UDS_n),
 	.LDS_n(LDS_n),
+	.AS_CPU_n(AS_CPU_n),
 	.DS_n(ds_n),
 	.BASE_RAM(base_ram[7:5]),
 	.RAM_CONFIGURED_n(ram_configured_n),
@@ -139,7 +125,9 @@ fastram ramcontrol(
 ata idecontrol(
 	.C14M(C14M),
 	.RESET_n(RESET_n),
-	.A(A[23:12]),
+	.A_HIGH(A_HIGH[23:16]),
+	.A12(A12),
+	.A13(A13),
 	.RW_n(RW_n),
 	.AS_CPU_n(AS_CPU_n),
 	.BASE_IDE(base_ide[7:0]),

@@ -1,14 +1,16 @@
 `timescale 1ns / 1ps
 
 module autoconfig_zii(
+	input C7M,
 	input CFGIN_n,
 	input JP2,
 	input AS_CPU_n,
 	input RESET_n,
 	input DS_n,
 	input RW_n,
-	input [23:1] A,
-	inout [15:0] D,
+	input [23:16] A_HIGH,
+	input [6:1] A_LOW,
+	inout [15:12] D,
 	output reg [7:5] BASE_RAM,
 	output reg [7:0] BASE_IDE,
 	output RAM_CONFIGURED_n,
@@ -23,13 +25,13 @@ localparam CONFIGURING_RAM 	= 2'b11;
 localparam CONFIGURING_IDE 	= 2'b10;
 
 localparam [15:0] MFG_ID   	= 16'h082C;	// 2092   - BSC
-localparam [7:0]  RAM_PROD_ID	= 8'd8;  	// 2092/8 - BSC Memory Master (8M)
-localparam [7:0]  IDE_PROD_ID	= 8'd6;  	// 2092/6 - A1K.org Community IDE Controller for 68030TK by Matze (64K)
+localparam [7:0]  RAM_PROD_ID	= 8'd8;  	// 2092/8 - Oktagon 2008, BSC Memory Master (8M)
+localparam [7:0]  IDE_PROD_ID	= 8'd6;  	// 2092/6 - Oktagon 2008 / A1K.org Community IDE Controller by Matze (64K)
 localparam [15:0] SERIAL   	= 16'd0;
 
 /*
 SysInfo reports it as a BSC Oktagon 2008 Z2 memory and a BSC Oktagon I/O device.
-scsi.device v109.3 and oktagon.device v6.10
+scsi.device v109.3 or oktagon.device v6.10, selectable via jumper.
 */
 
 reg [3:0] data_out = 4'hF;
@@ -37,12 +39,12 @@ reg [1:0] config_out_n = 2'b11;
 reg [1:0] configured_n = 2'b11;
 reg [1:0] shutup_n = 2'b11;
 
-wire autoconfig_access = !CFGIN_n && CFGOUT_n && (A[23:16] == 8'hE8);
+wire autoconfig_access = !CFGIN_n && CFGOUT_n && (A_HIGH == 8'hE8) && !AS_CPU_n;
 
 assign RAM_CONFIGURED_n = configured_n[RAM_CARD];
 assign IDE_CONFIGURED_n = configured_n[IDE_CARD];
 assign CFGOUT_n = |config_out_n;
-assign D[15:12] = autoconfig_access && RW_n && !DS_n ? data_out : 4'bZ;
+assign D = autoconfig_access && RW_n && !DS_n ? data_out : 4'bZ;
 
 always @(negedge RESET_n or posedge AS_CPU_n) begin
 
@@ -57,7 +59,7 @@ always @(negedge RESET_n or posedge AS_CPU_n) begin
 	end
 end
 
-always @(negedge RESET_n or negedge DS_n) begin
+always @(negedge RESET_n or posedge C7M) begin
 
 	if (!RESET_n) begin
 
@@ -67,7 +69,7 @@ always @(negedge RESET_n or negedge DS_n) begin
 
 	end else begin
 	
-		if(autoconfig_access) begin
+		if(autoconfig_access && !DS_n) begin
 		
 			if (RW_n) begin
 				
@@ -75,7 +77,7 @@ always @(negedge RESET_n or negedge DS_n) begin
 				
 				// All nibbles except 00,02,40 and 42 must be inverted
 				
-				case (A[6:1])
+				case (A_LOW)
 				
 					6'h00: begin
 						if (config_out_n == CONFIGURING_RAM) data_out <= 4'b1110;	// (00) 1110 Link into memory free list
@@ -133,7 +135,7 @@ always @(negedge RESET_n or negedge DS_n) begin
 				
 				// AutoConfig Write sequence. Here is where we receive from the OS the base address for the RAM.
 				
-				case (A[6:1])
+				case (A_LOW)
 				
 					6'h24: begin	// Written Second (48)
 						if (config_out_n == CONFIGURING_RAM) begin 

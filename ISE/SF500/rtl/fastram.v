@@ -6,6 +6,7 @@ module fastram(
 	input RW_n,
 	input UDS_n,
 	input LDS_n,
+	input AS_CPU_n,
 	input DS_n,
 	input [7:5] BASE_RAM,
 	input RAM_CONFIGURED_n,
@@ -29,8 +30,8 @@ Amiga memory map Z2-space:
 80000		 1	 0	 0	// 2MB
 */
 
-wire first_4MB_access  = !RAM_CONFIGURED_n && ( (A[23:21] == BASE_RAM[7:5]) || (A[23:21] == (BASE_RAM[7:5] + 3'b001)) );
-wire second_4MB_access = !RAM_CONFIGURED_n && JP2 && ( (A[23:21] == (BASE_RAM[7:5] + 3'b010)) || (A[23:21] == (BASE_RAM[7:5] + 3'b011)) );
+wire first_4MB_access  = !AS_CPU_n && !RAM_CONFIGURED_n && ( (A == BASE_RAM) || (A == (BASE_RAM + 3'b001)) );
+wire second_4MB_access = !AS_CPU_n && !RAM_CONFIGURED_n && JP2 && ( (A == (BASE_RAM + 3'b010)) || (A == (BASE_RAM + 3'b011)) );
 
 assign RAM_ACCESS = JP2 ? (first_4MB_access || second_4MB_access) : first_4MB_access;
 
