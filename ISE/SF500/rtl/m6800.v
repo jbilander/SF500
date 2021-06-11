@@ -62,8 +62,7 @@ always @(negedge RESET_n or negedge C7M or posedge AS_CPU_n) begin
 			if (e_counter == 'd9) begin
 				M6800_DTACK_n <= VMA_n;
 			end
-	  end
-	  
+	  	end
 	end
 	
 end
