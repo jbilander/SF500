@@ -18,15 +18,15 @@ module autoconfig_zii(
 	output CFGOUT_n
 );
 
-localparam RAM_CARD				= 1'b0;
-localparam IDE_CARD				= 1'b1;
+localparam RAM_CARD		= 1'b0;
+localparam IDE_CARD		= 1'b1;
 
 localparam CONFIGURING_RAM 	= 2'b11;
 localparam CONFIGURING_IDE 	= 2'b10;
 
 localparam [15:0] MFG_ID   	= 16'h082C;	// 2092   - BSC
 localparam [7:0]  RAM_PROD_ID	= 8'd8;  	// 2092/8 - Oktagon 2008, BSC Memory Master (8M)
-localparam [7:0]  IDE_PROD_ID	= 8'd6;  	// 2092/6 - Oktagon 2008 / A1K.org Community IDE Controller by Matze (64K)
+localparam [7:0]  IDE_PROD_ID	= 8'd6;  	// 2092/6 - Oktagon 2008, BSC I/O device / A1K.org Community IDE Controller by Matze (64K)
 localparam [15:0] SERIAL   	= 16'd0;
 
 /*
@@ -85,7 +85,7 @@ always @(negedge RESET_n or posedge C7M) begin
 					end
 					6'h01: begin
 						if (config_out_n == CONFIGURING_RAM) data_out <= JP2 ? 4'b0000 : 4'b0111;	// (02) 8 or 4 MB RAM
-						if (config_out_n == CONFIGURING_IDE) data_out <= 4'b0001;						// (02) 64KB
+						if (config_out_n == CONFIGURING_IDE) data_out <= 4'b0001;			// (02) 64KB
 					end
 					6'h02: begin
 						if (config_out_n == CONFIGURING_RAM) data_out <= ~RAM_PROD_ID[7:4];	// (04) Product number RAM
@@ -96,8 +96,8 @@ always @(negedge RESET_n or posedge C7M) begin
 						if (config_out_n == CONFIGURING_IDE) data_out <= ~IDE_PROD_ID[3:0];	// (06) Product number IDE
 					end
 					
-					6'h04: 	data_out <= ~4'b1100; 			// (08) 1100 Board can be shut up and has preference to be put in 8 Meg space.
-					6'h05: 	data_out <= ~4'b0000;			// (0A) 0000 Reserved
+					6'h04: 	data_out <= ~4'b1100; 		// (08) 1100 Board can be shut up and has preference to be put in 8 Meg space.
+					6'h05: 	data_out <= ~4'b0000;		// (0A) 0000 Reserved
 					
 					6'h08: 	data_out <= ~MFG_ID[15:12]; 	// (10) Manufacturer ID
 					6'h09: 	data_out <= ~MFG_ID[11:8];  	// (12) Manufacturer ID
@@ -105,10 +105,10 @@ always @(negedge RESET_n or posedge C7M) begin
 					6'h0B:   data_out <= ~MFG_ID[3:0];   	// (16) Manufacturer ID
 					
 					/*
-					6'h0C: 	data_out <= 4'hF;  				// (18) Serial number, byte 0 (msb)
-					6'h0D:	data_out <= 4'hF;  				// (1A) ----------"----------
-					6'h0E:	data_out <= 4'hF;  				// (1C) Serial number, byte 1
-					6'h0F:	data_out <= 4'hF;  				// (1E) ----------"----------
+					6'h0C: 	data_out <= 4'hF;  		// (18) Serial number, byte 0 (msb)
+					6'h0D:	data_out <= 4'hF;  		// (1A) ----------"----------
+					6'h0E:	data_out <= 4'hF;  		// (1C) Serial number, byte 1
+					6'h0F:	data_out <= 4'hF;  		// (1E) ----------"----------
 					*/
 					
 					6'h10:	data_out <= ~SERIAL[15:12]; 	// (20) Serial number, byte 2
@@ -124,8 +124,8 @@ always @(negedge RESET_n or posedge C7M) begin
 					*/
 					6'h17: if (config_out_n == CONFIGURING_IDE) data_out <= ~4'b0001;	//	(2E) Rom vector low byte low nybble
 					
-					6'h20:	data_out <= 4'd0;					// (40) Because this card does not generate INT's
-					6'h21:	data_out <= 4'd0;					// (42) Because this card does not generate INT's
+					6'h20:	data_out <= 4'd0;		// (40) Because this card does not generate INT's
+					6'h21:	data_out <= 4'd0;		// (42) Because this card does not generate INT's
 					
 					default: data_out <= 4'hF;
 					
