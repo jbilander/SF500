@@ -55,14 +55,14 @@ always @(negedge RESET_n or posedge C14M) begin
 		
 			IDE_IOW_n <= 1'b1;
 			IDE_IOR_n <= ide_enable_n;
-			ROM_OE_n	 <= ~ide_enable_n;
+			ROM_OE_n <= ~ide_enable_n;
 		
 		end else begin	//Write
 		
 			ide_enable_n <= 1'b0;
 			IDE_IOW_n <= 1'b0;
 			IDE_IOR_n <= 1'b1;
-			ROM_OE_n	 <= 1'b1;
+			ROM_OE_n <= 1'b1;
 			
 		end
 		
@@ -70,7 +70,7 @@ always @(negedge RESET_n or posedge C14M) begin
 	
 		IDE_IOW_n <= 1'b1;
 		IDE_IOR_n <= 1'b1;
-		ROM_OE_n	 <= 1'b1;
+		ROM_OE_n <= 1'b1;
 		
 	end
 
