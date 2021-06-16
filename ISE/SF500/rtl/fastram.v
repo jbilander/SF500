@@ -27,7 +27,7 @@ Amiga memory map Z2-space:
 200000-3FFFFF	 0	 0	 1	// 2MB
 400000-5FFFFF	 0	 1	 0	// 2MB
 600000-7FFFFF	 0	 1	 1	// 2MB
-800000.9FFFFF	 1	 0	 0	// 2MB
+800000-9FFFFF	 1	 0	 0	// 2MB
 */
 
 wire first_4MB_access  = !AS_CPU_n && !RAM_CONFIGURED_n && ( (A == BASE_RAM) || (A == (BASE_RAM + 3'b001)) );
