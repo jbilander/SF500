@@ -2,12 +2,20 @@
 Spitfire 500, A low-end 14 MHz Accelerator with IDE and 4/8 MB fast RAM for the Amiga 500.
 ***
 THIS IS WORK IN PROGRESS!!!
+
+KiCad files not added yet and won't be until Rev. 1B is verified working.
+
 ***
 Heavily inspired by Matthias Heinrichs' CDTV-RAM-IDE board. Many thanks to Matze for sharing his work and letting me open source this project.
 
 https://gitlab.com/MHeinrichs/CDTV-RAM-IDE/
 
 Please note, if you are going to build boards and sell for profit, you will need a consent from Matthias and also from Oliver Kastl if you are going to bundle this software http://aminet.net/package/disk/misc/oktapus with the hardware (ROM-chip).
+***
+
+Video:
+https://drive.google.com/file/d/1c2K9_kcEqxMMBJBd1aELfbt1fV5XXoU6/view?usp=sharing
+
 ***
 
 <a href="images/SF500_rev1a_pic1.jpg">
