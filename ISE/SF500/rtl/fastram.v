@@ -23,11 +23,11 @@ module fastram(
 /*
 Amiga memory map Z2-space:
 
-	A	23	22	21
-20000		 0	 0	 1	// 2MB
-40000		 0	 1	 0	// 2MB
-60000		 0	 1	 1	// 2MB
-80000		 1	 0	 0	// 2MB
+	      A	23 	22	21
+200000-3FFFFF	 0	 0	 1	// 2MB
+400000-5FFFFF	 0	 1	 0	// 2MB
+600000-7FFFFF	 0	 1	 1	// 2MB
+800000.9FFFFF	 1	 0	 0	// 2MB
 */
 
 wire first_4MB_access  = !AS_CPU_n && !RAM_CONFIGURED_n && ( (A == BASE_RAM) || (A == (BASE_RAM + 3'b001)) );
