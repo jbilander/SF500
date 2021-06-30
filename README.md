@@ -49,6 +49,19 @@ U7-U8 | 2 x CY62167G-45ZXI | | (Optional) Second 4 MB.
 U9 | XC95144XL-TQ100 | TQFP-100_14x14mm_P0.5mm | IC Xilinx CPLD 144MC 10NS 100TQFP, XC95144XL-10TQG100C
 U10 | 29F040 or 29F010 | PLCC-32_11.4x14.0mm_P1.27mm | e.g. AM29F040B-70JC or AS29CF010-55CCIN
 U11 | 74HCT2G14 | TSOP-6 | Dual inverting Schmitt trigger
+R1 | 10k | 1206 | /VPA Pull-up resistor
+R2 | 10k | 1206 | JP2 Pull-up resistor (P74)
+R3 | 1k | 1206 | /CFGIN Pull-down resistor (P70)
+R4 | 33 Ohm or 0 Ohm | 1206 | (Optional) /CFGOUT series resistor (P68)
+R5 | 10k | 1206 | JP3 Pull-up resistor (Line A15 ROM)
+R6 | 4.7k | 1206 | IDE_IORDY Pull-up resistor (P12)
+R7 | 1k | 1206 | IDE_IRQ Pull-down resistor (P27)
+R8 | 4.7k | 1206 | /AS_CPU Pull-up resistor (P79)
+R9 | 1k | 1206 | /DTACK_CPU Pull-up resistor (P13)
+
+
+
+
 
 <br />
 <br />
