@@ -42,6 +42,9 @@ Position  | Name/Value   | Package | Notes
 -|-|-|-|
 U1 | 64Pcs socket pins for Round Plug 0.5mm Diameter | 100Pcs | IC Leads Receptacle, gold or nickel plated, used as TH Pin Header. https://www.aliexpress.com/item/1005002830101899.html
 U2 | CPU Socket, 2 x 32 Female Pin Header 2.54mm pitch | 2 x Single Row 40Pin | Round Female Pin Header gold or nickel plated machined pins.
+U3 | Voltage Regulator 3.3V, LM1117-3.3 or AMS1117-3.3 | SOT-223 | 3.3V 1A Low Drop-Out (LDO) Voltage regulator
+U4 | NB3N502 - 14 MHz to 190 MHz PLL Clock Multiplier | SOIC-8 | 
+
 
 <br />
 <br />
