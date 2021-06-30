@@ -47,6 +47,8 @@ U4 | NB3N502 - 14 MHz to 190 MHz PLL Clock Multiplier | SOIC-8 | PLL with CLKOUT
 U5-U6 | 2 x CY62167G-45ZXI | 48-pin TSOP-I configurable as 1M × 16 or 2M × 8 SRAM |  First 4 MB. Cost €4,18 / Pcs if bought with No Warranty. https://www.digikey.se/product-detail/en/cypress-semiconductor-corp/CY62167G-45ZXI/2015-CY62167G-45ZXI-ND/9771526
 U7-U8 | 2 x CY62167G-45ZXI | | (Optional) Second 4 MB.
 U9 | XC95144XL-TQ100 | TQFP-100_14x14mm_P0.5mm | IC Xilinx CPLD 144MC 10NS 100TQFP, XC95144XL-10TQG100C
+U10 | 29F040 or 29F010 | PLCC-32_11.4x14.0mm_P1.27mm | e.g. AM29F040B-70JC or AS29CF010-55CCIN
+U11 | 74HCT2G14 | TSOP-6 | Dual inverting Schmitt trigger
 
 <br />
 <br />
