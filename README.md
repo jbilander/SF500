@@ -35,6 +35,14 @@ https://drive.google.com/file/d/1c2K9_kcEqxMMBJBd1aELfbt1fV5XXoU6/view?usp=shari
 <img src="images/SF500_rev1a_pic5.jpg" width="256" height="192">
 </a>
 
+
+BOM Rev. 1B
+---------
+Position  | Name/Value   | Package | Notes
+-|-|-|-|
+U1 | 64Pcs socket pins for Round Plug 0.5mm Diameter | 100Pcs | IC Leads Receptacle, gold or nickel plated, used as TH Pin Header. https://www.aliexpress.com/item/1005002830101899.html
+U2 | CPU Socket, 2 x 32 Female Pin Header 2.54mm pitch | 2 x Single Row 40Pin | Round Female Pin Header gold or nickel plated machined pins.
+
 <br />
 <br />
 
