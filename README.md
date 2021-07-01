@@ -77,6 +77,10 @@ C14 | 10uF | 1206 | capacitor for IDE VCC-pin
 C15 | 0.1uF = 100nF | 0805 | decoupling capacitor for U10 (ROM)
 C16 | 0.1uF = 100nF | 0805 | capacitor in (RC) debounce circuit (SW1)
 C17 | 0.1uF = 100nF | 0805 | decoupling capacitor for U11 (Schmitt trigger inverter)
+J1 | JTAG Pin Header 2.54mm pitch | Single row 6pin | (Optional) Pressing JTAG-header pins against holes while programming is enough.
+J2 | External Pin Header 2.54mm pitch | Single row 5pin angled or straight | 2.54mm Jumper on CFGIN-pin needed for enable Autoconfig unless daisy chained.
+SW1 (J3) | 3Pin Header 2.54mm pitch | Single row 3pin | Pin header with jumper select 7/14MHz or On-Off mini slide switch SS12D00 3pin 1P2T 2 Position toggle switch. Handle length: 3mm-6mm
+J4 | 2.0mm Pitch Right Angle IDE-socket | Double Row (2 x 22) Female 44pin header socket | 2 x 25 or 2 x 40, pull pin 45, 46 using a plier and cut with a hacksaw = Pin header 2 x 22. https://www.aliexpress.com/item/4001286548060.html
 
 <br />
 <br />
