@@ -65,7 +65,18 @@ R13 | 10k | 0805 | SW1 Pull-up resistor debounce circuit (P76)
 R14 | 10k | 0805 | resistor in (RC) debounce circuit
 R15 | 10k | 1206 | JP4 Pull-up (P67)
 R16 | 4.7k or 10k | 0805 | (Optional) CFGIN Pull-up (P70)
-
+C1 | 10uF | 1206 | capacitor for Voltage regulator
+C2 | 10uF | 1206 | capacitor for Voltage regulator
+C3 | 0.1uF = 100nF | 0805 | capacitor for Voltage regulator
+C4 | 0.1uF = 100nF | 0805 | decoupling capacitor for U4 (PLL)
+C5-C6 | 0.1uF = 100nF | 0805 | decoupling capacitors for U5-U6 (first 2 x SRAM)
+C7-C8 | 0.1uF = 100nF | 0805 | decoupling capacitors for U7-U8 (if populated, second 2 x SRAM)
+C9-C12 | 0.1uF = 100nF | 0805 | decoupling capacitors for U9 (CPLD)
+C13 | 10uF | 1206 | capacitor for VCC-pin
+C14 | 10uF | 1206 | capacitor for IDE VCC-pin
+C15 | 0.1uF = 100nF | 0805 | decoupling capacitor for U10 (ROM)
+C16 | 0.1uF = 100nF | 0805 | capacitor in (RC) debounce circuit (SW1)
+C17 | 0.1uF = 100nF | 0805 | decoupling capacitor for U11 (Schmitt trigger inverter)
 
 <br />
 <br />
