@@ -19,10 +19,10 @@ https://drive.google.com/file/d/1c2K9_kcEqxMMBJBd1aELfbt1fV5XXoU6/view?usp=shari
 ***
 
 <a href="images/SF500_rev1b_pic1.jpg">
-<img src="images/SF500_rev1b_pic1.jpg" width="336" height="420">
+<img src="images/SF500_rev1b_pic1.jpg" width="300" height="390">
 </a>
 <a href="images/SF500_rev1b_pic2.jpg">
-<img src="images/SF500_rev1b_pic2.jpg" width="336" height="420">
+<img src="images/SF500_rev1b_pic2.jpg" width="300" height="390">
 </a>
 <br />
 <a href="images/SF500_rev1a_pic3.jpg">
