@@ -13,8 +13,14 @@ https://gitlab.com/MHeinrichs/CDTV-RAM-IDE/
 Please note, if you are going to build boards and sell for profit, you will need a consent from Matthias and also from Oliver Kastl if you are going to bundle this software http://aminet.net/package/disk/misc/oktapus with the hardware (ROM-chip).
 ***
 
-Video:
+Videos: <br /><br />
 https://drive.google.com/file/d/1c2K9_kcEqxMMBJBd1aELfbt1fV5XXoU6/view?usp=sharing
+
+SysInfo tests running _oktagon.device_ on WB 1.3: <br />
+https://drive.google.com/file/d/1rewl8bivpIMPoLze_-Y7_mGYqzTiX6ET/view?usp=sharing
+
+Cold boot running _oktagon.device_ and WB 1.3: <br />
+https://drive.google.com/file/d/1MFdxnaCo8lNMqMQ6eJMtNUMSsBB8mtb-/view?usp=sharing
 
 ***
 
@@ -54,6 +60,14 @@ The CPU and the speed-select switch clears the A500 keyboard nicely when install
 
 ***
 
+### How to Build/Solder a board:
+
+The ROM image to burn to the AM29F040B-70JC chip can be downloaded from here: <br />
+https://gitlab.com/MHeinrichs/CDTV-RAM-IDE/-/blob/master/Prog/ATOKTACOMBINED.rom-512.bin
+
+Remember to Program the chip BEFORE you solder it down to the PCB. Do not byteswap if you are using a TL866II-Plus or similar programmer on Windows/Intel-arch, these parts are 8-bit so there is no concept of byte swapping.
+
+***
 
 BOM Rev. 1B
 ---------
