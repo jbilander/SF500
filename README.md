@@ -24,16 +24,35 @@ https://drive.google.com/file/d/1c2K9_kcEqxMMBJBd1aELfbt1fV5XXoU6/view?usp=shari
 <a href="images/SF500_rev1b_pic2.jpg">
 <img src="images/SF500_rev1b_pic2.jpg" width="300" height="390">
 </a>
-<br />
-<a href="images/SF500_rev1a_pic3.jpg">
-<img src="images/SF500_rev1a_pic3.jpg" width="256" height="192">
+
+
+***
+
+Rev. 1B installed in an A500. The 7/14 MHz switch can be easily accessed if hanging out the sidecar port opening of the A500 case. This switch can also be switched while the machine is running.
+
+***
+
+<a href="images/SF500_rev1b_pic3.jpg">
+<img src="images/SF500_rev1b_pic3.jpg" width="308" height="231">
 </a>
-<a href="images/SF500_rev1a_pic4.jpg">
-<img src="images/SF500_rev1a_pic4.jpg" width="256" height="192">
+<a href="images/SF500_rev1b_pic4.jpg">
+<img src="images/SF500_rev1b_pic4.jpg" width="308" height="231">
 </a>
-<a href="images/SF500_rev1a_pic5.jpg">
-<img src="images/SF500_rev1a_pic5.jpg" width="256" height="192">
+
+***
+
+The CPU and the speed-select switch clears the A500 keyboard nicely when installed. Also the CF- or SD-card adapter clears the ROM-chip nicely.
+
+***
+
+<a href="images/SF500_rev1b_pic5.jpg">
+<img src="images/SF500_rev1b_pic5.jpg" width="308" height="231">
 </a>
+<a href="images/SF500_rev1b_pic6.jpg">
+<img src="images/SF500_rev1b_pic6.jpg" width="308" height="231">
+</a>
+
+***
 
 
 BOM Rev. 1B
