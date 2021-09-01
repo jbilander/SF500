@@ -70,6 +70,9 @@ The CPU and the speed-select switch clears the A500 keyboard nicely when install
 <a href="images/SF500_rev1b_pic7.jpg">
 <img src="images/SF500_rev1b_pic7.jpg" width="256" height="192">
 </a>
+<a href="images/SF500_rev1b_pic10.jpg">
+<img src="images/SF500_rev1b_pic10.jpg" width="256" height="192">
+</a>
 
 <br />
 <br />
@@ -79,6 +82,31 @@ The CPU and the speed-select switch clears the A500 keyboard nicely when install
 <a href="images/SF500_rev1b_pic8.jpg">
 <img src="images/SF500_rev1b_pic8.jpg" width="256" height="192">
 </a>
+<a href="images/SF500_rev1b_pic9.jpg">
+<img src="images/SF500_rev1b_pic9.jpg" width="256" height="192">
+</a>
+
+***
+
+Keep in mind Kickstart 1.3 does not have FFS (Fast File System) in ROM, 
+so in order to use FFS with 1.3 make a small boot-partition (e.g. ~200 MB) and format it DOS\1, 
+not International (DOS\3) or DirCache (DOS\5), and not OFS (DOS\0).
+https://en.wikipedia.org/wiki/Amiga_Fast_File_System <br />
+
+Also, do not forget to set the MaxTransfer to _0x1fe00_ and hit Enter button after typing, then save the setting. This applies to all versions except the new KS 3.2
+
+<a href="images/SF500_rev1b_pic11.jpg">
+<img src="images/SF500_rev1b_pic11.jpg" width="320" height="189">
+</a>
+<a href="images/SF500_rev1b_pic12.jpg">
+<img src="images/SF500_rev1b_pic12.jpg" width="264" height="201">
+</a>
+<br />
+<br />
+Disk's partition and filesystem information should now be stored in the RDB (Rigid Disk Block)
+for autoboot to work under WB 1.3 with oktagon.device. 
+To install WB 1.3: Copy all content of the WB 1.3 floppy to the newly formatted Drive.
+
 
 ***
 
