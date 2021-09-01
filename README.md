@@ -139,7 +139,7 @@ Soldering: Start with all the surface mounts and then TH. I usually start with t
 
 ***
 
-Using some kapton tape can help to hold the chip in place while tacking it down to get everything to align properly. For the ROM-chip I pre-tin the pads and then use hot air rework station to solder it in place.
+Using some kapton tape can help to hold the chip in place while tacking it down to get everything aligned properly. For the ROM-chip I pre-tin the pads and then use hot air rework station to solder it in place.
 
 ***
 
@@ -159,7 +159,36 @@ Using some kapton tape can help to hold the chip in place while tacking it down 
 
 ***
 
-When all the surface mount components are done it's time for the TH-pins.
+When all the surface mount components are done it's time for the TH-pins. I use an old 68k CPU as a jig and a piece of pin strip on the other side to align the pins while soldering them in position. Press ontop the CPU somewhat at the same time when soldering for a great result.
+
+***
+
+<a href="images/SF500_rev1b_pic21.jpg">
+<img src="images/SF500_rev1b_pic21.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_rev1b_pic22.jpg">
+<img src="images/SF500_rev1b_pic22.jpg" width="256" height="192">
+</a>
+
+***
+
+I used a 1.2mm thick PCB as a spacer while soldering the 44-pin IDE connector in place. This because it'll clear the Kickstart ROM chip better if the connector and hence the adapter is positioned a little higher up. The 44-pinout on the PCB is deliberately flipped/designed so that you can plug the CF or SD-adapter directly to the angled-connector the "right" way, no ribbon cable and no buffering is used.
+
+***
+
+<a href="images/SF500_rev1b_pic23.jpg">
+<img src="images/SF500_rev1b_pic23.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_rev1b_pic24.jpg">
+<img src="images/SF500_rev1b_pic24.jpg" width="256" height="192">
+</a>
+<br />
+<a href="images/SF500_rev1b_pic25.jpg">
+<img src="images/SF500_rev1b_pic25.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_rev1b_pic26.jpg">
+<img src="images/SF500_rev1b_pic26.jpg" width="256" height="192">
+</a>
 
 ***
 
