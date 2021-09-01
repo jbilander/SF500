@@ -16,11 +16,14 @@ Please note, if you are going to build boards and sell for profit, you will need
 Videos: <br /><br />
 https://drive.google.com/file/d/1c2K9_kcEqxMMBJBd1aELfbt1fV5XXoU6/view?usp=sharing
 
-SysInfo tests running _oktagon.device_ on WB 1.3: <br />
+SysInfo tests running _oktagon.device_ on WB 1.3 on KS 1.3: <br />
 https://drive.google.com/file/d/1rewl8bivpIMPoLze_-Y7_mGYqzTiX6ET/view?usp=sharing
 
-Cold boot running _oktagon.device_ and WB 1.3: <br />
+Cold boot running _oktagon.device_ and WB 1.3 on KS 1.3: <br />
 https://drive.google.com/file/d/1MFdxnaCo8lNMqMQ6eJMtNUMSsBB8mtb-/view?usp=sharing
+
+Cold boot running _scsi.device_v109.3_  (oktapussy) and WB 3.1 on KS 3.1: <br />
+https://drive.google.com/file/d/1IrmWWG6SJgc65BBj8jGnHebKbp6LAcYa/view?usp=sharing
 
 ***
 
@@ -60,12 +63,41 @@ The CPU and the speed-select switch clears the A500 keyboard nicely when install
 
 ***
 
-### How to Build/Solder a board:
+### Performance
+
+14 MHz and JP3 Open (oktapussy-driver):
+
+<a href="images/SF500_rev1b_pic7.jpg">
+<img src="images/SF500_rev1b_pic7.jpg" width="256" height="192">
+</a>
+
+<br />
+<br />
+
+14 MHz and JP3 Closed (oktagon-driver):
+
+<a href="images/SF500_rev1b_pic8.jpg">
+<img src="images/SF500_rev1b_pic8.jpg" width="256" height="192">
+</a>
+
+***
+
+### How to Build:
 
 The ROM image to burn to the AM29F040B-70JC chip can be downloaded from here: <br />
 https://gitlab.com/MHeinrichs/CDTV-RAM-IDE/-/blob/master/Prog/ATOKTACOMBINED.rom-512.bin
 
 Remember to Program the chip BEFORE you solder it down to the PCB. Do not byteswap if you are using a TL866II-Plus or similar programmer on Windows/Intel-arch, these parts are 8-bit so there is no concept of byte swapping.
+
+***
+
+Soldering: Start with all the surface mounts and then TH. I usually start with the Voltage regulator and verify the 3.3V. After that the CPLD and verify JTAG-connection.
+
+MORE TO COME HERE...
+
+***
+
+
 
 ***
 
