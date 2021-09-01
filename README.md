@@ -70,8 +70,8 @@ The CPU and the speed-select switch clears the A500 keyboard nicely when install
 <a href="images/SF500_rev1b_pic7.jpg">
 <img src="images/SF500_rev1b_pic7.jpg" width="256" height="192">
 </a>
-<a href="images/SF500_rev1b_pic10.jpg">
-<img src="images/SF500_rev1b_pic10.jpg" width="256" height="192">
+<a href="images/SF500_rev1b_pic9.jpg">
+<img src="images/SF500_rev1b_pic9.jpg" width="256" height="192">
 </a>
 
 <br />
@@ -82,8 +82,8 @@ The CPU and the speed-select switch clears the A500 keyboard nicely when install
 <a href="images/SF500_rev1b_pic8.jpg">
 <img src="images/SF500_rev1b_pic8.jpg" width="256" height="192">
 </a>
-<a href="images/SF500_rev1b_pic9.jpg">
-<img src="images/SF500_rev1b_pic9.jpg" width="256" height="192">
+<a href="images/SF500_rev1b_pic10.jpg">
+<img src="images/SF500_rev1b_pic10.jpg" width="256" height="192">
 </a>
 
 ***
@@ -119,7 +119,7 @@ Remember to Program the chip BEFORE you solder it down to the PCB. Do not bytesw
 
 ***
 
-Soldering: Start with all the surface mounts and then TH. I usually start with the Voltage regulator and verify the 3V3. Then the CPLD and verify JTAG-connection, doing a boundary scan with ISE-Impact. No need to solder a pin header to the JTAG connector on the PCB, just hold the connector in position and press gently. It should also be possible to use a Raspberry Pi and the program _xc3sprog_. Optionally you can put 10k or 4.7k pull-ups on R10-R12 (TMS,TDI,TCK) if you have problems connecting to the CPLD, those are 3V3 so shouldn't damage anything even using GPIO from the RPi.
+Soldering: Start with all the surface mounts and then TH. I usually start with the Voltage regulator and verify the 3V3. Then the CPLD and verify JTAG-connection, doing a boundary scan with ISE-Impact. No need to solder a pin header to the JTAG connector on the PCB, just hold the connector in position and press gently. It should also be possible to use a Raspberry Pi and the program _xc3sprog_. Optionally you can put 10k or 4.7k pull-ups on R10-R12 (TMS,TDI,TCK) if you have problems connecting to the CPLD, those are 3V3 pull-ups so shouldn't damage anything using GPIO from a RPi. VCC is +5V and can be supplied through a typical usb phone-charger or similar, check polarity BEFORE you plug it in.
 
 ***
 
