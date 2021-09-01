@@ -137,10 +137,33 @@ Soldering: Start with all the surface mounts and then TH. I usually start with t
 <img src="images/SF500_rev1b_pic16.jpg" width="256" height="192">
 </a>
 
-MORE TO COME HERE...
+***
+
+Using some kapton tape can help to hold the chip in place while tacking it down to get everything to align properly. For the ROM-chip I pre-tin the pads and then use hot air rework station to solder it in place.
 
 ***
 
+<a href="images/SF500_rev1b_pic17.jpg">
+<img src="images/SF500_rev1b_pic17.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_rev1b_pic18.jpg">
+<img src="images/SF500_rev1b_pic18.jpg" width="256" height="192">
+</a>
+<br />
+<a href="images/SF500_rev1b_pic19.jpg">
+<img src="images/SF500_rev1b_pic19.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_rev1b_pic20.jpg">
+<img src="images/SF500_rev1b_pic20.jpg" width="256" height="192">
+</a>
+
+***
+
+When all the surface mount components are done it's time for the TH-pins.
+
+***
+
+MORE TO COME HERE...
 
 
 ***
