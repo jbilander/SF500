@@ -119,7 +119,23 @@ Remember to Program the chip BEFORE you solder it down to the PCB. Do not bytesw
 
 ***
 
-Soldering: Start with all the surface mounts and then TH. I usually start with the Voltage regulator and verify the 3.3V. After that the CPLD and verify JTAG-connection.
+Soldering: Start with all the surface mounts and then TH. I usually start with the Voltage regulator and verify the 3V3. Then the CPLD and verify JTAG-connection, doing a boundary scan with ISE-Impact. No need to solder a pin header to the JTAG connector on the PCB, just hold the connector in position and press gently. It should also be possible to use a Raspberry Pi and the program _xc3sprog_. Optionally you can put 10k or 4.7k pull-ups on R10-R12 (TMS,TDI,TCK) if you have problems connecting to the CPLD, those are 3V3 so shouldn't damage anything even using GPIO from the RPi.
+
+***
+
+<a href="images/SF500_rev1b_pic13.jpg">
+<img src="images/SF500_rev1b_pic13.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_rev1b_pic14.jpg">
+<img src="images/SF500_rev1b_pic14.jpg" width="256" height="192">
+</a>
+<br />
+<a href="images/SF500_rev1b_pic15.jpg">
+<img src="images/SF500_rev1b_pic15.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_rev1b_pic16.jpg">
+<img src="images/SF500_rev1b_pic16.jpg" width="256" height="192">
+</a>
 
 MORE TO COME HERE...
 
