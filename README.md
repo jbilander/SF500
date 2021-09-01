@@ -192,8 +192,47 @@ I used a 1.2mm thick PCB as a spacer while soldering the 44-pin IDE connector in
 
 ***
 
-MORE TO COME HERE...
+The final result. The mini-slide switch can optionally be soldered directly to the PCB if you prefer it that way. Only two pins are actually used, it's a normal two pin jumper with default pull-up, the third pin/hole is not connected and is only there to allow for soldering the mini-slide switch directly onto the PCB.
 
+***
+
+<a href="images/SF500_rev1b_pic27.jpg">
+<img src="images/SF500_rev1b_pic27.jpg" width="512" height="384">
+</a>
+
+***
+
+Programming can now be done either this way...
+
+***
+
+<a href="images/SF500_rev1b_pic28.jpg">
+<img src="images/SF500_rev1b_pic28.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_rev1b_pic29.jpg">
+<img src="images/SF500_rev1b_pic29.jpg" width="256" height="192">
+</a>
+<br />
+<a href="images/SF500_rev1b_pic30.jpg">
+<img src="images/SF500_rev1b_pic30.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_rev1b_pic31.jpg">
+<img src="images/SF500_rev1b_pic31.jpg" width="256" height="192">
+</a>
+
+***
+
+...or like in picture below...it requires the Amiga PSU to be turned ON to provide +5V to the Accelerator, do not connect any external +5V here:
+
+***
+
+<a href="images/SF500_rev1a_pic4.jpg">
+<img src="images/SF500_rev1a_pic4.jpg" width="256" height="192">
+</a>
+
+***
+
+MORE TO COME HERE...
 
 ***
 
