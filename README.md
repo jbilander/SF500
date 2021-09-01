@@ -22,7 +22,7 @@ https://drive.google.com/file/d/1rewl8bivpIMPoLze_-Y7_mGYqzTiX6ET/view?usp=shari
 Cold boot running _oktagon.device_ and WB 1.3 on KS 1.3: <br />
 https://drive.google.com/file/d/1MFdxnaCo8lNMqMQ6eJMtNUMSsBB8mtb-/view?usp=sharing
 
-Cold boot running _scsi.device_v109.3_  (oktapussy) and WB 3.1 on KS 3.1: <br />
+Cold boot running _scsi.device v109.3_  (oktapussy) and ClassicWB 3.1 (with 1.3 theme) on KS 3.1: <br />
 https://drive.google.com/file/d/1IrmWWG6SJgc65BBj8jGnHebKbp6LAcYa/view?usp=sharing
 
 ***
@@ -90,7 +90,7 @@ The CPU and the speed-select switch clears the A500 keyboard nicely when install
 
 Keep in mind Kickstart 1.3 does not have FFS (Fast File System) in ROM, 
 so in order to use FFS with 1.3 make a small boot-partition (e.g. ~200 MB) and format it DOS\1, 
-not International (DOS\3) or DirCache (DOS\5), and not OFS (DOS\0).
+not International (DOS\3) or DirCache (DOS\5), and not OFS (DOS\0). For KS 3.1 I would format it FFS International (DOS\3) or perhaps use PFS3. <br /><br />
 https://en.wikipedia.org/wiki/Amiga_Fast_File_System <br />
 
 Also, do not forget to set the MaxTransfer to _0x1fe00_ and hit Enter button after typing, then save the setting. This applies to all versions except the new KS 3.2
