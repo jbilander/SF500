@@ -11,19 +11,6 @@ Heavily inspired by Matthias Heinrichs' CDTV-RAM-IDE board. Many thanks to Matze
 https://gitlab.com/MHeinrichs/CDTV-RAM-IDE/
 
 Please note, if you are going to build boards and sell for profit, you will need a consent from Matthias and also from Oliver Kastl if you are going to bundle this software http://aminet.net/package/disk/misc/oktapus with the hardware (ROM-chip).
-***
-
-Videos: <br /><br />
-https://drive.google.com/file/d/1c2K9_kcEqxMMBJBd1aELfbt1fV5XXoU6/view?usp=sharing
-
-SysInfo tests running _oktagon.device_ on WB 1.3 on KS 1.3: <br />
-https://drive.google.com/file/d/1rewl8bivpIMPoLze_-Y7_mGYqzTiX6ET/view?usp=sharing
-
-Cold boot running _oktagon.device_ and WB 1.3 on KS 1.3: <br />
-https://drive.google.com/file/d/1MFdxnaCo8lNMqMQ6eJMtNUMSsBB8mtb-/view?usp=sharing
-
-Cold boot running _scsi.device v109.3_  (oktapussy) and ClassicWB 3.1 (with 1.3 theme) on KS 3.1: <br />
-https://drive.google.com/file/d/1IrmWWG6SJgc65BBj8jGnHebKbp6LAcYa/view?usp=sharing
 
 ***
 
@@ -33,7 +20,6 @@ https://drive.google.com/file/d/1IrmWWG6SJgc65BBj8jGnHebKbp6LAcYa/view?usp=shari
 <a href="images/SF500_rev1b_pic2.jpg">
 <img src="images/SF500_rev1b_pic2.jpg" width="300" height="390">
 </a>
-
 
 ***
 
@@ -47,6 +33,20 @@ Rev. 1B installed in an A500. The 7/14 MHz switch can be easily accessed if hang
 <a href="images/SF500_rev1b_pic4.jpg">
 <img src="images/SF500_rev1b_pic4.jpg" width="308" height="231">
 </a>
+
+***
+
+Videos: <br /><br />
+https://drive.google.com/file/d/1c2K9_kcEqxMMBJBd1aELfbt1fV5XXoU6/view?usp=sharing
+
+SysInfo tests running _oktagon.device_ on WB 1.3 on KS 1.3: <br />
+https://drive.google.com/file/d/1rewl8bivpIMPoLze_-Y7_mGYqzTiX6ET/view?usp=sharing
+
+Cold boot running _oktagon.device_ and WB 1.3 on KS 1.3: <br />
+https://drive.google.com/file/d/1MFdxnaCo8lNMqMQ6eJMtNUMSsBB8mtb-/view?usp=sharing
+
+Cold boot running _scsi.device v109.3_  (oktapussy) and ClassicWB 3.1 (with 1.3 theme) on KS 3.1: <br />
+https://drive.google.com/file/d/1IrmWWG6SJgc65BBj8jGnHebKbp6LAcYa/view?usp=sharing
 
 ***
 
@@ -65,7 +65,7 @@ The CPU and the speed-select switch clears the A500 keyboard nicely when install
 
 ### Performance
 
-14 MHz and JP3 Open (oktapussy-driver):
+14 MHz and JP3 Open (scsi.device v109.3):
 
 <a href="images/SF500_rev1b_pic7.jpg">
 <img src="images/SF500_rev1b_pic7.jpg" width="256" height="192">
@@ -77,7 +77,7 @@ The CPU and the speed-select switch clears the A500 keyboard nicely when install
 <br />
 <br />
 
-14 MHz and JP3 Closed (oktagon-driver):
+14 MHz and JP3 Closed (oktagon.device v6.10):
 
 <a href="images/SF500_rev1b_pic8.jpg">
 <img src="images/SF500_rev1b_pic8.jpg" width="256" height="192">
@@ -192,8 +192,53 @@ I used a 1.2mm thick PCB as a spacer while soldering the 44-pin IDE connector in
 
 ***
 
-MORE TO COME HERE...
+The final result. The mini-slide switch can optionally be soldered directly to the PCB if you prefer it that way. Only two pins are actually used, it's a normal two pin jumper with default pull-up, the third pin/hole is not connected and is only there to allow for soldering the mini-slide switch directly onto the PCB.
 
+***
+
+<a href="images/SF500_rev1b_pic27.jpg">
+<img src="images/SF500_rev1b_pic27.jpg" width="512" height="384">
+</a>
+
+***
+
+Programming can now be done either this way...
+
+***
+
+<a href="images/SF500_rev1b_pic28.jpg">
+<img src="images/SF500_rev1b_pic28.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_rev1b_pic29.jpg">
+<img src="images/SF500_rev1b_pic29.jpg" width="256" height="192">
+</a>
+<br />
+<a href="images/SF500_rev1b_pic30.jpg">
+<img src="images/SF500_rev1b_pic30.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_rev1b_pic31.jpg">
+<img src="images/SF500_rev1b_pic31.jpg" width="256" height="192">
+</a>
+
+***
+
+...or like in picture below...it requires the Amiga PSU to be turned ON to provide +5V to the Accelerator, do not connect any external +5V here:
+
+***
+
+<a href="images/SF500_rev1a_pic4.jpg">
+<img src="images/SF500_rev1a_pic4.jpg" width="256" height="192">
+</a>
+
+***
+
+Jumpers:
+
+    /CFGIN = This jumper is to activate autoconfig (active low with 1k pull-down resistor R3). No jumper here means no RAM nor IDE will be autoconfigured. 
+    SW1 = CPU speed toggle between 7 or 14 MHz, default 10k pull-up means 14 MHz
+    JP2 = Selects between 4 or 8 MB fast ram autoconfig, 8 MB requires U7,U8 populated too.
+    JP3 = Selects between IDE driver oktagon.device or scsi.device_v109.3 (oktapussy)
+    JP4 = Selects between Autoboot or Not. Jumper Closed means autoconfigure of driver is skipped.
 
 ***
 
@@ -243,9 +288,11 @@ J2 | External Pin Header 2.54mm pitch | Single row 5pin angled or straight | 2.5
 SW1 (J3) | 3Pin Header 2.54mm pitch | Single row 3pin | Pin header with jumper select 7/14MHz or On-Off mini slide switch SS12D00 3pin 1P2T 2 Position toggle switch. Handle length: 3mm-6mm
 J4 | 2.0mm Pitch Right Angle IDE-socket | Double Row (2 x 22) Female 44pin header socket | 2 x 25 or 2 x 40, pull pin 45, 46 using a plier and cut with a hacksaw = Pin header 2 x 22. https://www.aliexpress.com/item/4001286548060.html
 
-<br />
-<br />
+***
 
+Happy Hackin' 
+
+***
 
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
