@@ -1,11 +1,6 @@
 # SF500
 Spitfire 500, A low-end 14 MHz Accelerator with IDE and 4/8 MB fast RAM for the Amiga 500.
 ***
-THIS IS WORK IN PROGRESS!!!
-
-KiCad files not added yet and won't be until Rev. 1B is verified working.
-
-***
 Heavily inspired by Matthias Heinrichs' CDTV-RAM-IDE board. Many thanks to Matze for sharing his work and letting me open source this project.
 
 https://gitlab.com/MHeinrichs/CDTV-RAM-IDE/
@@ -238,7 +233,18 @@ Jumpers:
     SW1 = CPU speed toggle between 7 or 14 MHz, default 10k pull-up means 14 MHz
     JP2 = Selects between 4 or 8 MB fast ram autoconfig, 8 MB requires U7,U8 populated too.
     JP3 = Selects between IDE driver oktagon.device or scsi.device_v109.3 (oktapussy)
-    JP4 = Selects between Autoboot or Not. Jumper Closed means autoconfigure of driver is skipped.
+    JP4 = Selects between Autoboot or Not, jumper Closed means autoconfigure will not load the ROM-vector (the JP3-selected driver).
+
+***
+
+Synthesis Summary:
+
+<a href="images/SF500_rev1b_synthesis_summary.jpg">
+<img src="images/SF500_rev1b_synthesis_summary.jpg" width="512" height="384">
+</a>
+
+Zipped JED-file (_main_top.jed_) available under _Releases_
+
 
 ***
 
