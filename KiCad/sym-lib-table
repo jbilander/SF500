@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name SF500)(type Legacy)(uri ${KIPRJMOD}/SF500.lib)(options "")(descr ""))
+)

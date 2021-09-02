@@ -1,0 +1,50 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 29F040-PLCC-32
+D 512K X 8 Bit CMOS 5.0 Volt-only, Uniform Sector - Parallel Flash Memory
+K EEPROM FLASH 512K x 8 Bit
+F https://datasheet.octopart.com/AM29F040B-70JC-AMD-datasheet-3650.pdf
+$ENDCMP
+#
+$CMP 68000D_socket
+D 16/32-bit Microprocessor
+K 68000 Microprocessor CPU
+F https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf
+$ENDCMP
+#
+$CMP 68010D_socket
+D 16/32-bit Microprocessor
+K 68000 Microprocessor CPU
+F https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf
+$ENDCMP
+#
+$CMP 74HCT2G14
+D Dual inverting Schmitt trigger
+K Dual inverting Schmitt trigger
+F https://assets.nexperia.com/documents/data-sheet/74HC_HCT2G14.pdf
+$ENDCMP
+#
+$CMP 74HCT2G17
+D Dual non-inverting Schmitt trigger
+K Dual non-inverting Schmitt trigger
+F https://assets.nexperia.com/documents/data-sheet/74HC_HCT2G17.pdf
+$ENDCMP
+#
+$CMP CY62167G-48TSOP-I
+D CY62167G/CY62167GE 16-Mbit (1M words × 16-bit/2M words × 8-bit) Static RAM
+K CY62167G CY62167GE 16-Mbit (1M words × 16-bit/2M words × 8-bit) Static RAM
+$ENDCMP
+#
+$CMP LM1117-3.3
+D 800mA Low-Dropout Linear Regulator, 3.3V fixed output, TO-220/TO-252/TO-263/SOT-223
+K linear regulator ldo fixed positive
+F http://www.ti.com/lit/ds/symlink/lm1117.pdf
+$ENDCMP
+#
+$CMP NB3N502_PLL_Clock_Multiplier
+D 14 MHz to 190 MHz PLL Clock Multiplier
+K PLL Clock Multiplier
+F https://www.onsemi.com/pdf/datasheet/nb3n502-d.pdf
+$ENDCMP
+#
+#End Doc Library
