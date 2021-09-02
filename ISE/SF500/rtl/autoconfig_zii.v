@@ -4,6 +4,7 @@ module autoconfig_zii(
 	input C7M,
 	input CFGIN_n,
 	input JP2,
+	input JP4,
 	input AS_CPU_n,
 	input RESET_n,
 	input DS_n,
@@ -81,7 +82,7 @@ always @(negedge RESET_n or posedge C7M) begin
 				
 					6'h00: begin
 						if (config_out_n == CONFIGURING_RAM) data_out <= 4'b1110;	// (00) 1110 Link into memory free list
-						if (config_out_n == CONFIGURING_IDE) data_out <= 4'b1101;	// (00) 1101 Optional ROM vector valid
+						if (config_out_n == CONFIGURING_IDE) data_out <= JP4 ? 4'b1101 : 4'b1100;	// (00) 1101 Optional ROM vector valid
 					end
 					6'h01: begin
 						if (config_out_n == CONFIGURING_RAM) data_out <= JP2 ? 4'b0000 : 4'b0111;	// (02) 8 or 4 MB RAM

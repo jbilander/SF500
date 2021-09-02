@@ -3,6 +3,7 @@
 module main_top(
 	input SW1,
 	input JP2,
+	input JP4,
 	input C7M,
 	input C14M,
 	input RESET_n,
@@ -86,6 +87,7 @@ autoconfig_zii autoconfig(
 	.C7M(C7M),
 	.CFGIN_n(CFGIN_n),
 	.JP2(JP2),
+	.JP4(JP4),
 	.AS_CPU_n(AS_CPU_n),
 	.RESET_n(RESET_n),
 	.DS_n(ds_n),
