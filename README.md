@@ -16,6 +16,14 @@ Please note, if you are going to build boards and sell for profit, you will need
 <img src="images/SF500_rev1b_pic2.jpg" width="300" height="390">
 </a>
 
+    Board is four layers:
+    
+    signal (with 3V3-zone)
+    power plane (GND)
+    power plane (VCC)
+    signal
+
+
 ***
 
 Rev. 1B installed in an A500. The 7/14 MHz switch can be easily accessed if hanging out the sidecar port opening of the A500 case. This switch can also be switched while the machine is running.
