@@ -1,0 +1,61 @@
+EPROM-Hack zum AT-BUS 2008 IDE-Controller
+
+Anleitung zur Modifikation des Original-EPROMs
+
+Wozu dient der Hack?
+Das originale EPROM des AT-BUS2008 mit der Bezeichnung 6.10 enthält ein Ladeprogramm zur Übertragung des oktagon.device in den Systemspeicher des Amiga-Computers. Vermutlich wird ein movep Befehl in diesem Programm benutzt, die Auswirkung ist zumindest ein Systemabsturz während der Konfigurationsphase der Erweiterungskarte unter Verwendung einer MC68060 CPU. Über die später beim Systemstart nachgeladene 68060-Library werden die Unterschiede in den Befehlssätzen der verschiedenen CPUs abgefangen. Eventuell gibt es Turbokarten die eine solche Abfangfunktion über ihre eigene Firmware bereits beim booten zur Verfügung stellen, die GBA1000 Erweiterungen können es zumindest nicht. Für den Betrieb des IDE-Controllers auf dem GBA1000 Mainboard wird somit ein modifiziertes AT-BUS2008 EPROM benötigt.
+
+Wie das Problem lösen?
+Im EPROM 6.12 des Oktagon SCSI-Controllers ist eine 68060 verträgliche Laderoutine enthalten. Nur das darin enthaltene Device passt leider nicht zum AT-BUS2008. Also muss da etwas gebastelt werden, hierzu sind folgende Kleinigkeiten nötig:
+
+    Binärfile zum AT-BUS2008 6.10 EPROM (amiga.resource.cx)
+
+    Binärfile zum Oktagon SCSI-Controller 6.12 EPROM (amiga.resource.cx)
+
+    Hex-Editor (z.B. HxD Hex-Editor; Internet)
+
+Was muss gemacht werden?
+Folgende Schritte sind notwendig um den AT-BUS2008 für die MC68060 CPU fit zu machen:
+
+    Die Binärfiles SCSI-6.12 und AT-6.10 in den HEX-Editor laden
+
+    Die Daten der Adressen $000 bis $5FF im AT-6.10 File löschen 
+
+    Die Daten der Adressen $000 bis $5FF vom SCSI-6.12 File auf das AT-6.10 File ab $000 kopieren
+
+    Das modifizierte AT-6.10 File als Version AT-6.12 abspeichern
+
+    Ein EPROM 27C256 mit dem neuen AT-6.12 File brennen
+
+    Das AT-6.10 EPROM auf dem Controller gegen das AT-6.12 EPROM austauschen
+
+Funktioniert die Sache auch in Verbindung mit Oktapussy?
+Ich konnte keine Einschränkungen feststellen.
+
+Kann man auch ein EPROM mit dem Oktapussy AT-Device anfertigen?
+Hierdurch ist keine Installation des Device auf dem RDB der HDD notwendig. Die Unterstützung über 4GB ist voll gegeben. Folgende Schritte sind für ein Oktapussy-EPROM nötig:
+
+    Das AT-Device von Oktapussy in den Hex-Editor laden
+
+    Die Daten der Adressen $000 bis $11F im AT-Device löschen
+
+    Anschließend alle Daten ab Adresse $54E4 im AT-Device löschen
+
+    Das AT-6.12 File in den Hex-Editor laden
+
+    Alle Daten ab Adresse $1000 im AT-6.12 File löschen
+
+    Das modifizierte AT-Device von $000 bis $54E3 auf das AT-6.12 File ab $1000 kopieren
+
+    Das modifizierte AT-6.12 File als Version AT-OKTA abspeichern
+
+    Ein EPROM 27C256 mit dem neuen AT-OKTA File brennen
+
+    Das AT-6.10 EPROM auf dem Controller gegen das AT-OKTA EPROM austauschen
+
+Achtung!
+Ein Betrieb mit Oktapussy erfordert die HDD-Einrichtung über die HDInstTools 6.2 oder besser, zu finden im Aminet. Der Controller ist nun nicht mehr unter dem oktagon.device ansprechbar, je nach Systemausbau ist es das scsi.device oder das 2nd.scsi.device.
+
+
+Rückmeldungen zu Fehlverhalten:
+Bei gleichzeitigem Betrieb mit einem Oktagon SCSI-Controller werden die AT-Laufwerke nicht mehr erkannt.
