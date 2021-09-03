@@ -119,9 +119,9 @@ The ROM image to burn to the AM29F040B-70JC chip can be downloaded from here: <b
 https://gitlab.com/MHeinrichs/CDTV-RAM-IDE/-/blob/master/Prog/ATOKTACOMBINED.rom-512.bin
 
 The 64 KB ROM under _Releases_ is a combined ROM I made with the instructions from the textfile [EPROM-Hack_english.txt](https://github.com/jbilander/SF500/blob/main/EPROM-Hack_english.txt) in this repo (also available in German).
-It is 060-compatible too, not that it makes any different for this accelerator that uses a 68000 or 68010 CPU.
+It is 060-compatible too, not that it makes any difference for this accelerator that uses a 68000 or 68010 CPU.
 
-Burning any of the two ROM:s will work with this Accelerator (SF500).
+Burning any of the two ROM:s above will work with this Accelerator (SF500).
 
 The last version of the Oktagon2008 from BSC is 6.12 - but still reports as 6.10. As far as I know, only the boot code has changed to be compatible with the 68060. The actual driver is still 6.10.
 
