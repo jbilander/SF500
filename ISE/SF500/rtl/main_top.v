@@ -19,11 +19,13 @@ module main_top(
 	input [2:0] FC,
 	input AS_CPU_n,
 	input DTACK_MB_n,
+	input BGACK_n,
+	input BG_n,
+	input HALT_n,
 	output CFGOUT_n,
 	output CLKCPU,
 	output E,
 	output VMA_n,
-	output AS_MB_n,
 	output OE_BANK0_n,
 	output OE_BANK1_n,
 	output WE_BANK0_ODD_n,
@@ -35,9 +37,14 @@ module main_top(
 	output IDE_IOW_n,
 	output [1:0] IDE_CS_n,
 	inout [15:12] D,
-	inout DTACK_CPU_n
+	inout DTACK_CPU_n,
+	inout AS_MB_n
 );
 
+reg as_n = 1'b1;	// Address Strobe from CPU or Motherboard (other bus master e.g. A590)
+reg as_mobo_n = 1'b1;
+reg dmareq_n = 1'b1;
+reg cpu_speed_switch = 1'b1;
 
 wire [7:5] base_ram;	// base address for the RAM_CARD in Z2-space. (A23-A21)
 wire [7:0] base_ide;	// base address for the IDE_CARD in Z2-space. (A23-A16)
@@ -49,28 +56,41 @@ wire ide_access;	// keeps track if the IDE is being accessed.
 
 wire ds_n = LDS_n & UDS_n;	//Data Strobe
 wire fast_dtack_n = !AS_CPU_n && (ram_access || ide_access) ? 1'b0 : 1'b1;
+
 wire m6800_dtack_n;
 wire dtack_n = DTACK_MB_n & m6800_dtack_n & fast_dtack_n;
+wire dma_n = dmareq_n && BGACK_n && HALT_n;
 
-reg cpu_speed_switch = 1'b1;
 
 //Fast Rise Time Method of Driving 5V, drive to 3V3 then High-Z and let 1k pull-up do the rest
 assign DTACK_CPU_n = ((dtack_n & DTACK_CPU_n) == 1'b0) ? dtack_n : 1'bZ; 
+
 assign CLKCPU = cpu_speed_switch ? C7M : C14M;
-
-//TODO: Allow for bus arbitration, DMA from A590, GVP or similar.
-assign AS_MB_n = AS_CPU_n;
+assign AS_MB_n = as_mobo_n;
 
 
-//Wait until bus-cycle has reached (S7) before hot-switching to new cpu speed
 always @(posedge C14M) begin
 
+	//Wait until bus-cycle has reached (S7) before hot-switching to new cpu speed
 	if (AS_CPU_n && dtack_n) begin
 		cpu_speed_switch <= SW1;
 	end
+
+	//Bus arbitration: BG_n = 0 and wait for current cycle to complete, AS_n = 1, DTACK_n = 1, (BGACK_n = 1).
+	//2-Wire Bus Arbitration: External device takes control on BG_n = 0 and relinquish bus by negating BR_n, CPU then negates BG_n.
+	//3-Wire Bus Arbitration: External device will set BGACK_n = 0 to take control of bus and relinquish bus by negating BGACK_n
+	if (!BG_n) begin
+		if (AS_CPU_n && dtack_n) begin
+			dmareq_n <= 1'b0; 
+		end 
+	end else begin
+		dmareq_n <= 1'b1; 
+	end
+	
+	as_mobo_n <= dma_n ? AS_CPU_n : 1'bZ;
+	as_n <= dma_n ? AS_CPU_n : AS_MB_n;
 	
 end
-
 
 m6800 m6800_bus(
 	.C7M(C7M),
@@ -108,7 +128,7 @@ fastram ramcontrol(
 	.RW_n(RW_n),
 	.UDS_n(UDS_n),
 	.LDS_n(LDS_n),
-	.AS_CPU_n(AS_CPU_n),
+	.AS_n(as_n),
 	.DS_n(ds_n),
 	.BASE_RAM(base_ram[7:5]),
 	.RAM_CONFIGURED_n(ram_configured_n),
