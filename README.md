@@ -278,7 +278,7 @@ You will need to solder/connect a jumper-wire from the CFGOUT-goldfinger-pad and
 
 ***
 
-Having the A590 jumper set to enable onboard memory (2MB in picures below) is not optimal in this case since that memory will automatically be used first by the system. As you can see only 0.84 mips here:
+Having the A590 jumper set to enable onboard memory (2MB in picures below) is not optimal in this case since that memory will automatically be used first by the system. You will have to set the jumper (JP2) to _ON_ (4MB) on the SF500 in this scenario but as you can see only 0.84 mips here:
 
 <a href="images/SF500_and_A590_pic3.jpg">
 <img src="images/SF500_and_A590_pic3.jpg" width="256" height="192">
@@ -315,11 +315,33 @@ With the SF500 set to _Amnesia_ we get the full performance at 14 MHz and we can
 <a href="images/SF500_and_A590_pic9.jpg">
 <img src="images/SF500_and_A590_pic9.jpg" width="256" height="192">
 </a>
+<br />
+<a href="images/SF500_and_A590_pic10.jpg">
+<img src="images/SF500_and_A590_pic10.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_and_A590_pic11.jpg">
+<img src="images/SF500_and_A590_pic11.jpg" width="256" height="192">
+</a>
 
 
 ***
 
+Changing boot priority in HDToolBox let us select which drive to boot from. Please note, I used prio 10 here but if you still want the DF0 floppy drive as the first device (you probably will) then you can't put in a number above 5. Keep it below 5 since DF0 has boot priority 5 by default, this was just for testing, remember to press Enter after entering the new value in the box and then hit the _Save Changes to Drive_ button before you do a reboot.
 
+<a href="images/SF500_and_A590_pic12.jpg">
+<img src="images/SF500_and_A590_pic12.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_and_A590_pic13.jpg">
+<img src="images/SF500_and_A590_pic13.jpg" width="256" height="192">
+</a>
+
+***
+
+A short video showing boot from A590 in _Amnesia_ mode and copying a 2.2 MB file from the SF500 IDE drive to the A590 XT drive. <br /><br />
+https://drive.google.com/file/d/1oLW0H9GmMaRv7rbYKLQVwRg4RvrDyU3E/view?usp=sharing
+<br /><br />
+Here a short video booting from the SF500 IDE drive (with higher boot prio set) than the A590 (still in _Amnesia_ mode). The A590 harddrive is automatically mounted and available to the system after startup:<br /><br />
+https://drive.google.com/file/d/13qs9DawRrVdHNif9vCZlh3xlq8YgDj_f/view?usp=sharing
 
 ***
 
