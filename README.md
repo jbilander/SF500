@@ -260,6 +260,66 @@ Synthesis Summary:
 
 Zipped JED-file (_main_top.jed_) available under _Releases_
 
+New firmware released 2021-12-22 that supports DMA from A590, available under _Releases_
+
+***
+
+### SF500 and A590
+With the updated firmware it's now possible to use an A590 (on the A500 expansion edge) togheter with a SF500.
+<br />
+You will need to solder/connect a jumper-wire from the CFGOUT-goldfinger-pad and run it to the CFGIN-pin on the SF500. This will asure that there will be no conflict during AutoConfig cycles. They will be daisy-chained meaning the A590 configures first and the SF500 is second in line.
+
+<a href="images/SF500_and_A590_pic1.jpg">
+<img src="images/SF500_and_A590_pic1.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_and_A590_pic2.jpg">
+<img src="images/SF500_and_A590_pic2.jpg" width="256" height="192">
+</a>
+
+***
+
+Having the A590 jumper set to enable onboard memory (2MB in picures below) is not optimal in this case since that memory will automatically be used first by the system. As you can see only 0.84 mips here:
+
+<a href="images/SF500_and_A590_pic3.jpg">
+<img src="images/SF500_and_A590_pic3.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_and_A590_pic4.jpg">
+<img src="images/SF500_and_A590_pic4.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_and_A590_pic5.jpg">
+<img src="images/SF500_and_A590_pic5.jpg" width="256" height="192">
+</a>
+
+***
+
+In this case it's much better to set the A590 jumper to _Amnesia_ and hence "only" use the 4MB or 8MB from the SF500. Don't worry the A590 can then DMA (Direct Memory Access) into that memory:
+
+***
+
+<a href="images/SF500_and_A590_pic6.jpg">
+<img src="images/SF500_and_A590_pic6.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_and_A590_pic7.jpg">
+<img src="images/SF500_and_A590_pic7.jpg" width="256" height="192">
+</a>
+
+***
+
+With the SF500 set to _Amnesia_ we get the full performance at 14 MHz and we can use the Hard Drive in the A590 either to boot from or just as a second harddrive for storage or backup (this depends on boot prio setting). Both the Oktagon.device and the Oktapussy scsi.device can co-exist with the A590 driver. As you can see the oktapussy driver takes the name _2nd_ scsi device here:
+
+***
+
+<a href="images/SF500_and_A590_pic8.jpg">
+<img src="images/SF500_and_A590_pic8.jpg" width="256" height="192">
+</a>
+<a href="images/SF500_and_A590_pic9.jpg">
+<img src="images/SF500_and_A590_pic9.jpg" width="256" height="192">
+</a>
+
+
+***
+
+
 
 ***
 
