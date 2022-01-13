@@ -6,7 +6,19 @@ K EEPROM FLASH 512K x 8 Bit
 F https://datasheet.octopart.com/AM29F040B-70JC-AMD-datasheet-3650.pdf
 $ENDCMP
 #
+$CMP 68000D
+D 16/32-bit Microprocessor
+K 68000 Microprocessor CPU
+F https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf
+$ENDCMP
+#
 $CMP 68000D_socket
+D 16/32-bit Microprocessor
+K 68000 Microprocessor CPU
+F https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf
+$ENDCMP
+#
+$CMP 68010D
 D 16/32-bit Microprocessor
 K 68000 Microprocessor CPU
 F https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf
