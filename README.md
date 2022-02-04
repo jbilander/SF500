@@ -353,8 +353,8 @@ U1 | 64Pcs socket pins for Round Plug 0.5mm Diameter | 100Pcs | IC Leads Recepta
 U2 | CPU Socket, 2 x 32 Female Pin Header 2.54mm pitch | 2 x Single Row 40Pin | Round Female Pin Header gold or nickel plated machined pins.
 U3 | Voltage Regulator 3.3V, LM1117-3.3 or AMS1117-3.3 | SOT-223 | 3.3V 1A Low Drop-Out (LDO) Voltage regulator.
 U4 | NB3N502 - 14 MHz to 190 MHz PLL Clock Multiplier | SOIC-8 | PLL with CLKOUT and at the same time output the input aligned reference clock signal (REF).
-U5-U6 | 2 x CY62167G-45ZXI | 48-pin TSOP-I configurable as 1M × 16 or 2M × 8 SRAM |  First 4 MB. Cost €4,18 / Pcs if bought with No Warranty. https://www.digikey.se/product-detail/en/cypress-semiconductor-corp/CY62167G-45ZXI/2015-CY62167G-45ZXI-ND/9771526
-U7-U8 | 2 x CY62167G-45ZXI | | (Optional) Second 4 MB.
+U5-U6 | 2 x CY62167G-45ZXI or 2 x CY62167ELL-45ZXI | 48-pin TSOP-I configurable as 1M × 16 or 2M × 8 SRAM |  First 4 MB. Cost $3 / Pcs from here https://www.aliexpress.com/item/1005003256658439.html (verified ok)
+U7-U8 | 2 x CY62167G-45ZXI or 2 x CY62167ELL-45ZXI | | (Optional) Second 4 MB.
 U9 | XC95144XL-TQ100 | TQFP-100_14x14mm_P0.5mm | IC Xilinx CPLD 144MC 10NS 100TQFP, XC95144XL-10TQG100C
 U10 | 29F040 or 29F010 | PLCC-32_11.4x14.0mm_P1.27mm | e.g. AM29F040B-70JC or AS29CF010-55CCIN
 U11 | 74HCT2G14 | TSOP-6 | Dual inverting Schmitt trigger
